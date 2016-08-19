@@ -141,11 +141,11 @@ Haskell:
 * https://github.com/Thashiznets/MIP39.NET
 
 .NET C# (PCL):
-* https://github.com/NicolasDorier/NBitcoin
+* https://github.com/NicolasDorier/NMachinecoin
 
 JavaScript:
 * https://github.com/bitpay/bitcore-mnemonic
-* https://github.com/bitcoinjs/mip39 (used by [[https://github.com/blockchain/My-Wallet-V3/blob/v3.8.0/src/hd-wallet.js#L121-L146|blockchain.info]])
+* https://github.com/machinecoinjs/mip39 (used by [[https://github.com/blockchain/My-Wallet-V3/blob/v3.8.0/src/hd-wallet.js#L121-L146|blockchain.info]])
 
 Ruby:
 * https://github.com/sreekanthgs/mip_mnemonic

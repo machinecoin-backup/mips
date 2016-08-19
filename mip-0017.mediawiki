@@ -9,7 +9,7 @@
 
 ==Abstract==
 
-This MIP describes a new opcode (OP_CHECKHASHVERIFY) for the Bitcoin scripting system, and a new 'standard' transaction type that uses it to enables the receiver of bitcoins to specify the transaction type needed to re-spend them.
+This MIP describes a new opcode (OP_CHECKHASHVERIFY) for the Machinecoin scripting system, and a new 'standard' transaction type that uses it to enables the receiver of machinecoins to specify the transaction type needed to re-spend them.
 
 ==Motivation==
 
@@ -56,7 +56,7 @@ For example, the scriptPubKey and corresponding scriptSig for a one-signature-re
 
 This MIP replaces MIP 12 and MIP 16, which propose evaluating a Script from the stack after verifying its hash.
 
-The Motivation for this MIP (and MIP 13, the pay-to-script-hash address type) is somewhat controversial; several people feel that it is unnecessary, and complex/multisignature transaction types should be supported by simply giving the sender the complete {serialized script}. The author believes that this MIP will minimize the changes needed to all of the supporting infrastructure that has already been created to send funds to a base58-encoded-20-byte bitcoin addresses, allowing merchants and exchanges and other software to start supporting multisignature transactions sooner.
+The Motivation for this MIP (and MIP 13, the pay-to-script-hash address type) is somewhat controversial; several people feel that it is unnecessary, and complex/multisignature transaction types should be supported by simply giving the sender the complete {serialized script}. The author believes that this MIP will minimize the changes needed to all of the supporting infrastructure that has already been created to send funds to a base58-encoded-20-byte machinecoin addresses, allowing merchants and exchanges and other software to start supporting multisignature transactions sooner.
 
 There is a 1-confirmation attack on old implementations, but it is expensive and difficult in practice. The attack is:
 
@@ -90,9 +90,9 @@ OP_NOP2 is used, so existing OP_EVAL (MIP 12) transactions in the block chain ca
 
 ==Reference Implementation==
 
-[https://gitorious.org/~Luke-Jr/bitcoin/luke-jr-bitcoin/commits/checkhashverify Validation, sending, and receiving for bitcoind git master]
+[https://gitorious.org/~Luke-Jr/machinecoin/luke-jr-machinecoin/commits/checkhashverify Validation, sending, and receiving for machinecoind git master]
 
-[https://gitorious.org/~Luke-Jr/bitcoin/luke-jr-bitcoin/commits/checkhashverify_backport Validation only for 0.3.19+]
+[https://gitorious.org/~Luke-Jr/machinecoin/luke-jr-machinecoin/commits/checkhashverify_backport Validation only for 0.3.19+]
 
 ==See Also==
 

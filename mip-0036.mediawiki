@@ -13,7 +13,7 @@ This MIP adds new fields to the <code>version</code> message which clients can u
 
 ==Motivation==
 
-We would like to encourage experimentation with custom services that extend the Bitcoin protocol with useful functionality. Examples include Distributed Hash Tables (DHT), distributed pools, lightweight client support protocols, directed message routing and support for custom transports. However, without a general framework for protocol extensions, these custom services are likely to collide in various ways. This MIP provides such a framework.
+We would like to encourage experimentation with custom services that extend the Machinecoin protocol with useful functionality. Examples include Distributed Hash Tables (DHT), distributed pools, lightweight client support protocols, directed message routing and support for custom transports. However, without a general framework for protocol extensions, these custom services are likely to collide in various ways. This MIP provides such a framework.
 
 ==Specification==
 
@@ -41,7 +41,7 @@ The service definitions <code>service[]</code> are given in the following format
 
 A node MUST NOT announce two services with the same <code>service_name</code>. If a remote node sends such a <code>version</code> message the client MAY disconnect.
 
-The <code>service_version</code> is service-specific and can be any integer. Higher versions SHOULD be higher integers. When a service is standardized, it is assigned a <code>NODE_*</code> constant for use with the <code>services</code> field and future iterations of the protocol depend on the Bitcoin protocol version. Both the <code>NODE_*</code> flag and the custom service entry MAY be provided for the duration of a transitional period.
+The <code>service_version</code> is service-specific and can be any integer. Higher versions SHOULD be higher integers. When a service is standardized, it is assigned a <code>NODE_*</code> constant for use with the <code>services</code> field and future iterations of the protocol depend on the Machinecoin protocol version. Both the <code>NODE_*</code> flag and the custom service entry MAY be provided for the duration of a transitional period.
 
 Services SHOULD pass an empty string (0x00) as <code>service_data</code> and use a custom handshake to initialize their protocol, exchange information about capabilities etc. Note that to become a standardized service, a service MUST NOT rely on <code>service_data</code> since there is no corresponding mechanism for the standard services defined in the <code>services</code> field.
 
@@ -74,7 +74,7 @@ Invalid examples:
 
 ===Optional: Custom commands===
 
-Bitcoin command names are limited to 12 characters. That doesn't leave a lot of space for both the service identifier and the service command. Therefore we recommend that all service commands SHOULD be represented by a single "command" on the Bitcoin network. This command SHOULD consist of the exact service identifier to avoid collisions with other services, prefixed by an underscore to avoid collisions with current or future Bitcoin protocol messages. For example: <code>_MySampleSvc</code>
+Machinecoin command names are limited to 12 characters. That doesn't leave a lot of space for both the service identifier and the service command. Therefore we recommend that all service commands SHOULD be represented by a single "command" on the Machinecoin network. This command SHOULD consist of the exact service identifier to avoid collisions with other services, prefixed by an underscore to avoid collisions with current or future Machinecoin protocol messages. For example: <code>_MySampleSvc</code>
 
 The service-specific command name SHOULD then be specified in an extra header in the payload:
 
@@ -113,11 +113,11 @@ Search message:
 
 ==Standardization==
 
-Custom services may become standard parts of the protocol. Services which wish to become part of the Bitcoin protocol MUST fulfill the following criteria:
+Custom services may become standard parts of the protocol. Services which wish to become part of the Machinecoin protocol MUST fulfill the following criteria:
 
 * MUST NOT use <code>service_data</code>; Standard services have no corresponding field
 * MUST use a peer discovery mechanism which specifies one bit per node, same as the <code>services</code> field in <code>addr</code> messages
-* MUST NOT use any subcommands that conflict with current or planned Bitcoin protocol commands
+* MUST NOT use any subcommands that conflict with current or planned Machinecoin protocol commands
 
 The standardization process will usually take place as follows:
 
@@ -130,9 +130,9 @@ The standardization process will usually take place as follows:
 # After the transitional period:
 #* Clients MUST only announce the service via the <code>services</code> field.
 #* Clients MUST only send unwrapped messages.
-# Future changes to the service API now require a MIP and an increase in the Bitcoin protocol version.
+# Future changes to the service API now require a MIP and an increase in the Machinecoin protocol version.
 
-This process of adding a service to the Bitcoin protocol should only be undertaken for services where there is a strong rationale for doing so. Services MAY also be standardized as custom services via a MIP while maintaining the custom service format.
+This process of adding a service to the Machinecoin protocol should only be undertaken for services where there is a strong rationale for doing so. Services MAY also be standardized as custom services via a MIP while maintaining the custom service format.
 
 ==Rationale==
 

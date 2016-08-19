@@ -23,7 +23,7 @@ The specification consists of two parts. In a first part, a system for deriving 
 
 ==Motivation==
 
-The Bitcoin reference client uses randomly generated keys. In order to avoid the necessity for a backup after every transaction, (by default) 100 keys are cached in a pool of reserve keys. Still, these wallets are not intended to be shared and used on several systems simultaneously. They support hiding their private keys by using the wallet encrypt feature and not sharing the password, but such "neutered" wallets lose the power to generate public keys as well.
+The Machinecoin reference client uses randomly generated keys. In order to avoid the necessity for a backup after every transaction, (by default) 100 keys are cached in a pool of reserve keys. Still, these wallets are not intended to be shared and used on several systems simultaneously. They support hiding their private keys by using the wallet encrypt feature and not sharing the password, but such "neutered" wallets lose the power to generate public keys as well.
 
 Deterministic wallets do not require such frequent backups, and elliptic curve mathematics permit schemes where one can calculate the public keys without revealing the private keys. This permits for example a webshop business to let its webserver generate fresh addresses (public key hashes) for each order or for each customer, without giving the webserver access to the corresponding private keys (which are required for spending the received funds).
 
@@ -33,7 +33,7 @@ However, deterministic wallets typically consist of a single "chain" of keypairs
 
 ===Conventions===
 
-In the rest of this text we will assume the public key cryptography used in Bitcoin, namely elliptic curve cryptography using the field and curve parameters defined by secp256k1 (http://www.secg.org/sec2-v2.pdf). Variables below are either:
+In the rest of this text we will assume the public key cryptography used in Machinecoin, namely elliptic curve cryptography using the field and curve parameters defined by secp256k1 (http://www.secg.org/sec2-v2.pdf). Variables below are either:
 * Integers modulo the order of the curve (referred to as n).
 * Coordinates of points on the curve.
 * Byte sequences.
@@ -113,7 +113,7 @@ Each leaf node in the tree corresponds to an actual key, while the internal node
 
 ===Key identifiers===
 
-Extended keys can be identified by the Hash160 (RIPEMD160 after SHA256) of the serialized ECSDA public key K, ignoring the chain code. This corresponds exactly to the data used in traditional Bitcoin addresses. It is not advised to represent this data in base58 format though, as it may be interpreted as an address that way (and wallet software is not required to accept payment to the chain key itself).
+Extended keys can be identified by the Hash160 (RIPEMD160 after SHA256) of the serialized ECSDA public key K, ignoring the chain code. This corresponds exactly to the data used in traditional Machinecoin addresses. It is not advised to represent this data in base58 format though, as it may be interpreted as an address that way (and wallet software is not required to accept payment to the chain key itself).
 
 The first 32 bits of the identifier are called the key fingerprint.
 
@@ -127,7 +127,7 @@ Extended public and private keys are serialized as follows:
 * 32 bytes: the chain code
 * 33 bytes: the public key or private key data (ser<sub>P</sub>(K) for public keys, 0x00 || ser<sub>256</sub>(k) for private keys)
 
-This 78 byte structure can be encoded like other Bitcoin data in Base58, by first adding 32 checksum bits (derived from the double SHA-256 checksum), and then converting to the Base58 representation. This results in a Base58-encoded string of up to 112 characters. Because of the choice of the version bytes, the Base58 representation will start with "xprv" or "xpub" on mainnet, "tprv" or "tpub" on testnet.
+This 78 byte structure can be encoded like other Machinecoin data in Base58, by first adding 32 checksum bits (derived from the double SHA-256 checksum), and then converting to the Base58 representation. This results in a Base58-encoded string of up to 112 characters. Because of the choice of the version bytes, the Base58 representation will start with "xprv" or "xpub" on mainnet, "tprv" or "tpub" on testnet.
 
 Note that the fingerprint of the parent only serves as a fast way to detect parent and child nodes in software, and software must be willing to deal with collisions. Internally, the full 160-bit identifier could be used.
 
@@ -138,7 +138,7 @@ When importing a serialized extended public key, implementations must verify whe
 The total number of possible extended keypairs is almost 2<sup>512</sup>, but the produced keys are only 256 bits long, and offer about half of that in terms of security. Therefore, master keys are not generated directly, but instead from a potentially short seed value.
 
 * Generate a seed byte sequence S of a chosen length (between 128 and 512 bits; 256 bits is advised) from a (P)RNG.
-* Calculate I = HMAC-SHA512(Key = "Bitcoin seed", Data = S)
+* Calculate I = HMAC-SHA512(Key = "Machinecoin seed", Data = S)
 * Split I into two 32-byte sequences, I<sub>L</sub> and I<sub>R</sub>.
 * Use parse<sub>256</sub>(I<sub>L</sub>) as master secret key, and I<sub>R</sub> as master chain code.
 In case I<sub>L</sub> is 0 or ≥n, the master key is invalid.
@@ -255,25 +255,25 @@ Seed (hex): fffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c
 
 Two Python implementations exist:
 
-PyCoin (https://github.com/richardkiss/pycoin) is a suite of utilities for dealing with Bitcoin that includes MIP0032 wallet features.  MIP32Utils (https://github.com/jmcorgan/mip32utils) is a library and command line interface specifically focused on MIP0032 wallets and scripting.
+PyCoin (https://github.com/richardkiss/pycoin) is a suite of utilities for dealing with Machinecoin that includes MIP0032 wallet features.  MIP32Utils (https://github.com/jmcorgan/mip32utils) is a library and command line interface specifically focused on MIP0032 wallets and scripting.
 
-2 Java implementations exist: https://github.com/bitsofproof/supernode/blob/1.1/api/src/main/java/com/bitsofproof/supernode/api/ExtendedKey.java and https://github.com/bushidowallet/bushido-java-core/tree/master/src/main/java/com/bushidowallet/core/bitcoin/mip32
+2 Java implementations exist: https://github.com/bitsofproof/supernode/blob/1.1/api/src/main/java/com/bitsofproof/supernode/api/ExtendedKey.java and https://github.com/bushidowallet/bushido-java-core/tree/master/src/main/java/com/bushidowallet/core/machinecoin/mip32
 
 A C++ implementation is available at https://github.com/ciphrex/mSIGNA/blob/master/deps/CoinCore/src/hdkeys.h
 
-An Objective-C implementation is available at https://github.com/oleganza/CoreBitcoin/blob/master/CoreBitcoin/BTCKeychain.h
+An Objective-C implementation is available at https://github.com/oleganza/CoreMachinecoin/blob/master/CoreMachinecoin/BTCKeychain.h
 
 A Ruby implementation is available at https://github.com/GemHQ/money-tree
 
 Two Go implementations exist:
 
-hdkeychain (https://github.com/conformal/btcutil/tree/master/hdkeychain) provides an API for bitcoin hierarchical deterministic extended keys (MIP0032).  Go HD Wallet (https://github.com/WeMeetAgain/go-hdwallet).
+hdkeychain (https://github.com/conformal/btcutil/tree/master/hdkeychain) provides an API for machinecoin hierarchical deterministic extended keys (MIP0032).  Go HD Wallet (https://github.com/WeMeetAgain/go-hdwallet).
 
 Two JavaScript implementations exist: available at https://github.com/sarchar/brainwallet.github.com/tree/mip32 and https://github.com/bitpay/bitcore
 
-A PHP implemetation is available at https://github.com/Bit-Wasp/bitcoin-lib-php
+A PHP implemetation is available at https://github.com/Bit-Wasp/machinecoin-lib-php
 
-A C# implementation is available at https://github.com/NicolasDorier/NBitcoin (ExtKey, ExtPubKey)
+A C# implementation is available at https://github.com/NicolasDorier/NMachinecoin (ExtKey, ExtPubKey)
 
 A Haskell implementation is available at https://github.com/haskoin/haskoin together with a CLI interface at https://github.com/np/hx
 

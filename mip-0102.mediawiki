@@ -39,5 +39,5 @@ network engineering limit.
 
 ==Implementation==
 
-https://github.com/jgarzik/bitcoin/tree/2015_2mb_blocksize
+https://github.com/jgarzik/machinecoin/tree/2015_2mb_blocksize
 

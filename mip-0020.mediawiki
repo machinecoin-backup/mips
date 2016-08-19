@@ -10,7 +10,7 @@
 MIP 0020 is based off an earlier document by Nils Schneider. '''And has been replaced by MIP 0021'''
 
 ==Abstract==
-This MIP proposes a URI scheme for making Bitcoin payments.
+This MIP proposes a URI scheme for making Machinecoin payments.
 
 ==Motivation==
 The purpose of this URI scheme is to enable users to easily make payments by simply clicking links on webpages or scanning QR Codes.
@@ -19,21 +19,21 @@ The purpose of this URI scheme is to enable users to easily make payments by sim
 
 === General rules for handling (important!) ===
 
-Bitcoin clients MUST NOT act on URIs without getting the user's authorization.
+Machinecoin clients MUST NOT act on URIs without getting the user's authorization.
 They SHOULD require the user to manually approve each payment individually, though in some cases they MAY allow the user to automatically make this decision.
 
 === Operating system integration ===
-Graphical bitcoin clients SHOULD register themselves as the handler for the "bitcoin:" URI scheme by default, if no other handler is already registered. If there is already a registered handler, they MAY prompt the user to change it once when they first run the client.
+Graphical machinecoin clients SHOULD register themselves as the handler for the "machinecoin:" URI scheme by default, if no other handler is already registered. If there is already a registered handler, they MAY prompt the user to change it once when they first run the client.
 
 === BNF grammar ===
 
 (See also [[#Simpler syntax|a simpler representation of syntax]])
 
- bitcoinurn      = "bitcoin:" bitcoinaddress [ ";version=" bitcoinversion ] [ "?" bitcoinparams ]
- bitcoinaddress  = base58 *base58
- bitcoinversion  = "1.0"
- bitcoinparams   = *bitcoinparam
- bitcoinparam    = amountparam | labelparam | messageparam | sendparam | otherparam
+ machinecoinurn      = "machinecoin:" machinecoinaddress [ ";version=" machinecoinversion ] [ "?" machinecoinparams ]
+ machinecoinaddress  = base58 *base58
+ machinecoinversion  = "1.0"
+ machinecoinparams   = *machinecoinparam
+ machinecoinparam    = amountparam | labelparam | messageparam | sendparam | otherparam
  amountparam     = "amount=" amount
  amount          = amountdecimal | amounthex
  amountdecimal   = *digit [ "." *digit ] [ "X" *digit ]
@@ -46,10 +46,10 @@ Graphical bitcoin clients SHOULD register themselves as the handler for the "bit
 === Query Keys ===
 
 *label: Label for that address (e.g. name of receiver)
-*address: bitcoin address
+*address: machinecoin address
 *message: message that shown to the user after scanning the QR code
-*size: amount of base bitcoin units ([[#Transfer amount/size|see below]])
-*send: used to send bitcoin, rather than to request them
+*size: amount of base machinecoin units ([[#Transfer amount/size|see below]])
+*send: used to send machinecoin, rather than to request them
 *(others): optional, for future extensions
 
 ==== Transfer amount/size ====
@@ -61,9 +61,9 @@ For decimal values, this means the standard BTC unit.
 For hexadecimal values, this means ᵇTBC units (which are equivalent to 42.94967296 BTC).
 If exponent is omitted, implementations SHOULD assume X8 for decimal numbers, and X4 for hexadecimal numbers.
 I.e. amount=50.00 is treated as 50 BTC, and amount=x40 is treated as 40 TBC.
-When specifying bitcoin base units, "X0" SHOULD be used.
+When specifying machinecoin base units, "X0" SHOULD be used.
 
-Bitcoin clients MAY display the amount in any format that is not intended to deceive the user.
+Machinecoin clients MAY display the amount in any format that is not intended to deceive the user.
 They SHOULD choose a format that is foremost least confusing, and only after that most reasonable given the amount requested.
 For example, so long as the majority of users work in BTC units, values should always be displayed in BTC by default, even if mBTC or TBC would otherwise be a more logical interpretation of the amount.
 
@@ -77,7 +77,7 @@ Therefore, a URI scheme should not represent an exchange of personal information
 Should someone from the outside happen to see such a URI, the URI scheme name already gives a description.
 A quick search should then do the rest to help them find the resources needed to make their payment.
 Other proposed names sound much more cryptic; the chance that someone googles that out of curiosity are much slimmer.
-Also, very likely, what he will find are mostly technical specifications - not the best introduction to bitcoin.
+Also, very likely, what he will find are mostly technical specifications - not the best introduction to machinecoin.
 
 ==Forward compatibility==
 We want URIs generated in 2011 to still work in 2036: think about extensibility.
@@ -95,34 +95,34 @@ Please see the [[#BNF grammar|BNF grammar]] above for the normative syntax.
 [foo] means optional, &lt;bar&gt; are placeholders
 
 <pre>
- bitcoin:<address>[;version=1.0][?amount=<amount>][?label=<label>][?message=<message>][?send=<private key>]
+ machinecoin:<address>[;version=1.0][?amount=<amount>][?label=<label>][?message=<message>][?send=<private key>]
 </pre>
 
 === Examples ===
 
 Just the address:
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L
 
 Address with name:
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?label=Luke-Jr
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?label=Luke-Jr
 
 Request 20.30 BTC to "Luke-Jr":
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=20.3X8&label=Luke-Jr
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=20.3X8&label=Luke-Jr
 
 Request 400 TBC:
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=x400X4
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=x400X4
 
 Request 4000 TBC:
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=x4X7
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=x4X7
 
 Request 5 uBTC:
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=5X2
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=5X2
 
 Request 50 BTC with message:
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=50X8&label=Luke-Jr&message=Donation%20for%20project%20xyz
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=50X8&label=Luke-Jr&message=Donation%20for%20project%20xyz
 
 Send 1 BTC:
- bitcoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=1X8&send=S4b3N3oGqDqR5jNuxEvDwf
+ machinecoin:1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L?amount=1X8&send=S4b3N3oGqDqR5jNuxEvDwf
 
 Characters must be URI encoded properly.
 
@@ -136,7 +136,7 @@ To send a payment to someone else first construct a new keypair. You may want to
 Construct an address from the public key. Encode the URI as below:
 
 <pre>
- bitcoin:<address>?send=<base 58 encoded private key>
+ machinecoin:<address>?send=<base 58 encoded private key>
 </pre>
 
 You may optionally include amount or message fields as well. In a wallet to claim money sent this way search for an incoming transaction with the output script form above, where &lt;address&gt; matches the public key in the script. When you find the transaction create a claim transaction with an input script of this form:
@@ -148,8 +148,8 @@ You may optionally include amount or message fields as well. In a wallet to clai
 This claims the money you were sent. Until your claim transaction has confirmed the sender may take their money back.
 
 == Reference Implementations ==
-=== Bitcoin clients ===
-* [[Spesmilo]] supports all valid Bitcoin URIs, with Windows and KDE integration
+=== Machinecoin clients ===
+* [[Spesmilo]] supports all valid Machinecoin URIs, with Windows and KDE integration
 
 === Parsing amount ===
 ==== ECMAScript ====

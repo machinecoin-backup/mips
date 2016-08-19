@@ -44,7 +44,7 @@ Hardened derivation is used at this level.
 ===Coin type===
 
 One master node (seed) can be used for unlimited number of independent
-cryptocoins such as Bitcoin, Litecoin or Namecoin. However, sharing the same
+cryptocoins such as Machinecoin, Litecoin or Namecoin. However, sharing the same
 space for various cryptocoins has some disadvantages.
 
 This level creates a separate subtree for every cryptocoin, avoiding
@@ -139,11 +139,11 @@ All these constants are used as hardened derivation.
 |-
 |0
 |0x80000000
-|Bitcoin
+|Machinecoin
 |-
 |1
 |0x80000001
-|Bitcoin Testnet
+|Machinecoin Testnet
 |}
 
 This MIP is not a central directory for the registered coin types, please
@@ -163,97 +163,97 @@ is required and a pull request to the above file should be created.
 !address
 !path
 |-
-|Bitcoin
+|Machinecoin
 |first
 |external
 |first
 |m / 44' / 0' / 0' / 0 / 0
 |-
-|Bitcoin
+|Machinecoin
 |first
 |external
 |second
 |m / 44' / 0' / 0' / 0 / 1
 |-
-|Bitcoin
+|Machinecoin
 |first
 |change
 |first
 |m / 44' / 0' / 0' / 1 / 0
 |-
-|Bitcoin
+|Machinecoin
 |first
 |change
 |second
 |m / 44' / 0' / 0' / 1 / 1
 |-
-|Bitcoin
+|Machinecoin
 |second
 |external
 |first
 |m / 44' / 0' / 1' / 0 / 0
 |-
-|Bitcoin
+|Machinecoin
 |second
 |external
 |second
 |m / 44' / 0' / 1' / 0 / 1
 |-
-|Bitcoin
+|Machinecoin
 |second
 |change
 |first
 |m / 44' / 0' / 1' / 1 / 0
 |-
-|Bitcoin
+|Machinecoin
 |second
 |change
 |second
 |m / 44' / 0' / 1' / 1 / 1
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |first
 |external
 |first
 |m / 44' / 1' / 0' / 0 / 0
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |first
 |external
 |second
 |m / 44' / 1' / 0' / 0 / 1
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |first
 |change
 |first
 |m / 44' / 1' / 0' / 1 / 0
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |first
 |change
 |second
 |m / 44' / 1' / 0' / 1 / 1
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |second
 |external
 |first
 |m / 44' / 1' / 1' / 0 / 0
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |second
 |external
 |second
 |m / 44' / 1' / 1' / 0 / 1
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |second
 |change
 |first
 |m / 44' / 1' / 1' / 1 / 0
 |-
-|Bitcoin Testnet
+|Machinecoin Testnet
 |second
 |change
 |second
@@ -264,7 +264,7 @@ is required and a pull request to the above file should be created.
 
 * [[https://mytrezor.com|myTREZOR web wallet]] ([[https://github.com/trezor/webwallet|source]])
 * [[https://play.google.com/store/apps/details?id=com.bonsai.wallet32|Wallet32 @ Android]] ([[https://github.com/ksedgwic/Wallet32|source]])
-* [[https://play.google.com/store/apps/details?id=com.mycelium.wallet|Mycelium Bitcoin Wallet (Android)]] ([[https://github.com/mycelium-com/wallet|source]])
+* [[https://play.google.com/store/apps/details?id=com.mycelium.wallet|Mycelium Machinecoin Wallet (Android)]] ([[https://github.com/mycelium-com/wallet|source]])
 * [[https://copay.io/|Copay]] ([[https://github.com/bitpay/copay|source]])
 * [[https://maza.club/encompass|Encompass]] ([[https://github.com/mazaclub/encompass|source]])
 * [[https://www.coinvault.io/|CoinVault]] 

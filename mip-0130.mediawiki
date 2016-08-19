@@ -40,7 +40,7 @@ Older clients remain fully compatible and interoperable after this change.
 
 ==Implementation==
 
-https://github.com/bitcoin/bitcoin/pull/6494
+https://github.com/machinecoin/machinecoin/pull/6494
 
 ==Copyright==
 

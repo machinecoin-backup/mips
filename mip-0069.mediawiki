@@ -1,7 +1,7 @@
 <pre>
   MIP: 69
   Title: Lexicographical Indexing of Transaction Inputs and Outputs
-  Author: Kristov Atlas <kristov@openbitcoinprivacyproject.org>
+  Author: Kristov Atlas <kristov@openmachinecoinprivacyproject.org>
   Editor: Daniel Cousens <mips@dcousens.com>
   Status: Draft
   Type: Informational
@@ -10,7 +10,7 @@
 
 ==Abstract==
 
-Currently there is no standard for bitcoin wallet clients when ordering transaction inputs and outputs.
+Currently there is no standard for machinecoin wallet clients when ordering transaction inputs and outputs.
 As a result, wallet clients often have a discernible blockchain fingerprint, and can leak private information about their users.
 By contrast, a standard for non-deterministic sorting could be difficult to audit.
 This document proposes deterministic lexicographical sorting, using hashes of previous transactions and output indices to sort transaction inputs, as well as values and scriptPubKeys to sort transaction outputs.
@@ -142,15 +142,15 @@ Outputs:
 
 ==Discussion==
 
-* [[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-June/008484.html|<nowiki>[Bitcoin-development]</nowiki> Lexicographical Indexing of Transaction Inputs and Outputs]]
-* [[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-June/008487.html|<nowiki>[Bitcoin-development] [RFC]</nowiki> Canonical input and output ordering in transactions]]
+* [[https://lists.linuxfoundation.org/pipermail/machinecoin-dev/2015-June/008484.html|<nowiki>[Machinecoin-development]</nowiki> Lexicographical Indexing of Transaction Inputs and Outputs]]
+* [[https://lists.linuxfoundation.org/pipermail/machinecoin-dev/2015-June/008487.html|<nowiki>[Machinecoin-development] [RFC]</nowiki> Canonical input and output ordering in transactions]]
 
 ==References==
 
-* [[https://bitcoinmagazine.com/20273/bitstamp-exchange-activity-trackable-due-multisig-wallet-implementation/|1: Bitstamp Info Leak]]
-* [[https://github.com/OpenBitcoinPrivacyProject/wallet-ratings/blob/master/2015-1/criteria.md|2: OBPP Random Indexing as Countermeasure]]
-* [[https://github.com/aantonop/bitcoinbook/blob/develop/ch05.asciidoc|3: Mastering Bitcoin]]
-* [[https://en.bitcoin.it/wiki/Script|4: Bitcoin Wiki on Script]]
+* [[https://machinecoinmagazine.com/20273/bitstamp-exchange-activity-trackable-due-multisig-wallet-implementation/|1: Bitstamp Info Leak]]
+* [[https://github.com/OpenMachinecoinPrivacyProject/wallet-ratings/blob/master/2015-1/criteria.md|2: OBPP Random Indexing as Countermeasure]]
+* [[https://github.com/aantonop/machinecoinbook/blob/develop/ch05.asciidoc|3: Mastering Machinecoin]]
+* [[https://en.machinecoin.it/wiki/Script|4: Machinecoin Wiki on Script]]
 * [[http://www.cplusplus.com/reference/algorithm/lexicographical_compare|5: std::lexicographical_compare]]
 * [[http://www.cplusplus.com/reference/cstring/memcmp|6: memcmp]]
 * [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_compare_buf1_buf2|7: Buffer.compare]]
@@ -159,13 +159,13 @@ Outputs:
 ==Implementations==
 
 * [[https://github.com/spesmilo/electrum/blob/2af670ea2b92e835919b745d94afcb8b4ec32fda/lib/transaction.py#L648|Electrum]]
-* [[https://github.com/bitcoinjs/mip69/blob/master/index.js|BitcoinJS]]
-* [[https://github.com/bitcoinjs/mip69/blob/master/test/fixtures.json|BitcoinJS Test Fixtures]]
+* [[https://github.com/machinecoinjs/mip69/blob/master/index.js|MachinecoinJS]]
+* [[https://github.com/machinecoinjs/mip69/blob/master/test/fixtures.json|MachinecoinJS Test Fixtures]]
 * [[https://www.npmjs.com/package/mip69|NodeJS]]
 * [[https://github.com/blockchain/My-Wallet-V3/blob/v3.8.0/src/transaction.js#L120-L142|Blockchain.info public beta]]
 * [[https://github.com/btcsuite/btcutil/blob/master/txsort/txsort.go|Btcsuite]]
 
 ==Acknowledgements==
 
-Danno Ferrin &lt;danno@numisight.com&gt;, Sergio Demian Lerner &lt;sergiolerner@certimix.com&gt;, Justus Ranvier &lt;justus@openbitcoinprivacyproject.org&gt;, and Peter Todd &lt;pete@petertodd.org&gt; contributed to the design and motivations for this MIP.
-A similar proposal was submitted to the Bitcoin-dev mailing list independently by Rusty Russell &lt;rusty@rustcorp.com.au&gt;
+Danno Ferrin &lt;danno@numisight.com&gt;, Sergio Demian Lerner &lt;sergiolerner@certimix.com&gt;, Justus Ranvier &lt;justus@openmachinecoinprivacyproject.org&gt;, and Peter Todd &lt;pete@petertodd.org&gt; contributed to the design and motivations for this MIP.
+A similar proposal was submitted to the Machinecoin-dev mailing list independently by Rusty Russell &lt;rusty@rustcorp.com.au&gt;

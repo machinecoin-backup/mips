@@ -9,11 +9,11 @@
 
 ==Abstract==
 
-Bitcoin blocks and transactions are versioned binary structures. Both currently use version 1. This MIP introduces an upgrade path for versioned transactions and blocks. A unique value is added to newly produced coinbase transactions, and blocks are updated to version 2.
+Machinecoin blocks and transactions are versioned binary structures. Both currently use version 1. This MIP introduces an upgrade path for versioned transactions and blocks. A unique value is added to newly produced coinbase transactions, and blocks are updated to version 2.
 
 ==Motivation==
 
-# Clarify and exercise the mechanism whereby the bitcoin network collectively consents to upgrade transaction or block binary structures, rules and behaviors.
+# Clarify and exercise the mechanism whereby the machinecoin network collectively consents to upgrade transaction or block binary structures, rules and behaviors.
 # Enforce block and transaction uniqueness, and assist unconnected block validation.
 
 ==Specification==
@@ -29,7 +29,7 @@ All older clients are compatible with this change. Users and merchants should no
 
 ==Implementation==
 
-https://github.com/bitcoin/bitcoin/pull/1526
+https://github.com/machinecoin/machinecoin/pull/1526
 
 ==Result==
 

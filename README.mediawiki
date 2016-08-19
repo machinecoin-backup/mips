@@ -4,7 +4,7 @@ We are fairly liberal with approving MIPs, and try not to be too involved in dec
 
 Having a MIP here does not make it a formally accepted standard until its status becomes Active. For a MIP to become Active requires the mutual consent of the community.
 
-Those proposing changes should consider that ultimately consent may rest with the consensus of the Bitcoin users (see also: [https://en.bitcoin.it/wiki/Economic_majority economic majority]).
+Those proposing changes should consider that ultimately consent may rest with the consensus of the Machinecoin users (see also: [https://en.machinecoin.it/wiki/Economic_majority economic majority]).
 
 {| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller; table-layout: fixed;"
 !Number
@@ -188,7 +188,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | MIP number allocated
 |-
 | [[mip-0042.mediawiki|42]]
-| A finite monetary supply for Bitcoin
+| A finite monetary supply for Machinecoin
 | Pieter Wuille
 | Standard
 | Draft
@@ -297,7 +297,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Final
 |- style="background-color: #cfffcf"
 | [[mip-0072.mediawiki|72]]
-| bitcoin: uri extensions for Payment Protocol
+| machinecoin: uri extensions for Payment Protocol
 | Gavin Andresen
 | Standard
 | Final
@@ -369,7 +369,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Draft
 |-
 | [[mip-0106.mediawiki|106]]
-| Dynamically Controlled Bitcoin Block Size Max Cap
+| Dynamically Controlled Machinecoin Block Size Max Cap
 | Upal Chakraborty
 | Standard
 | Draft

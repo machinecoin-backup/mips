@@ -9,7 +9,7 @@
 
 ==Abstract==
 
-This MIP describes a new opcode (OP_CHECKLOCKTIMEVERIFY) for the Bitcoin
+This MIP describes a new opcode (OP_CHECKLOCKTIMEVERIFY) for the Machinecoin
 scripting system that allows a transaction output to be made unspendable until
 some point in the future.
 
@@ -98,7 +98,7 @@ making transaction malleability a non-issue.
 
 ====Two-factor wallets====
 
-Services like GreenAddress store bitcoins with 2-of-2 multisig scriptPubKey's
+Services like GreenAddress store machinecoins with 2-of-2 multisig scriptPubKey's
 such that one keypair is controlled by the user, and the other keypair is
 controlled by the service. To spend funds the user uses locally installed
 wallet software that generates one of the required signatures, and then uses a
@@ -191,7 +191,7 @@ As an aside, note how if the SignatureHash() algorithm could optionally cover
 part of the scriptSig the signature could require that the scriptSig contain
 CHECKLOCKTIMEVERIFY opcodes, and additionally, require that they be executed.
 (the CODESEPARATOR opcode came very close to making this possible in v0.1 of
-Bitcoin) This per-signature capability could replace the per-transaction
+Machinecoin) This per-signature capability could replace the per-transaction
 nLockTime field entirely as a valid signature would now be the proof that a
 transaction output ''can'' be spent.
 
@@ -271,7 +271,7 @@ semantics and detailed rationale for those semantics.
     
     }
 
-https://github.com/petertodd/bitcoin/commit/ab0f54f38e08ee1e50ff72f801680ee84d0f1bf4
+https://github.com/petertodd/machinecoin/commit/ab0f54f38e08ee1e50ff72f801680ee84d0f1bf4
 
 
 ==Deployment==
@@ -310,12 +310,12 @@ time.
 
 PayPub - https://github.com/unsystem/paypub
 
-Jeremy Spilman Payment Channels - https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2013-April/002433.html
+Jeremy Spilman Payment Channels - https://lists.linuxfoundation.org/pipermail/machinecoin-dev/2013-April/002433.html
 
 
 ==Implementations==
 
-Python / python-bitcoinlib
+Python / python-machinecoinlib
 
 - https://github.com/petertodd/checklocktimeverify-demos
 

@@ -1,6 +1,6 @@
 <pre>
   MIP: 72
-  Title: bitcoin: uri extensions for Payment Protocol
+  Title: machinecoin: uri extensions for Payment Protocol
   Author: Gavin Andresen <gavinandresen@gmail.com>
   Status: Final
   Type: Standards Track
@@ -9,39 +9,39 @@
 
 ==Abstract==
 
-This MIP describes an extension to the bitcoin: URI scheme (MIP 21) to
+This MIP describes an extension to the machinecoin: URI scheme (MIP 21) to
 support the payment protocol (MIP 70).
 
 ==Motivation==
 
 Allow users to click on a link in a web page or email to initiate the
 payment protocol, while being backwards-compatible with existing
-bitcoin wallets.
+machinecoin wallets.
 
 ==Specification==
 
-The bitcoin: URI scheme is extended with an additional, optional
+The machinecoin: URI scheme is extended with an additional, optional
 "r" parameter, whose value is a URL from which a PaymentRequest
 message should be fetched (characters not allowed within the scope
 of a query parameter must be percent-encoded as described in RFC 3986
 and mip-0021).
 
 If the "r" parameter is provided and backwards compatibility
-is not required, then the bitcoin address portion of the URI may be
-omitted (the URI will be of the form: bitcoin:?r=... ).
+is not required, then the machinecoin address portion of the URI may be
+omitted (the URI will be of the form: machinecoin:?r=... ).
 
-When Bitcoin wallet software that supports this MIP receives a
-bitcoin: URI with a request parameter, it should ignore the bitcoin
+When Machinecoin wallet software that supports this MIP receives a
+machinecoin: URI with a request parameter, it should ignore the machinecoin
 address/amount/label/message in the URI and instead fetch a
 PaymentRequest message and then follow the payment protocol, as
 described in MIP 70.
 
-Bitcoin wallets must support fetching PaymentRequests via http and
+Machinecoin wallets must support fetching PaymentRequests via http and
 https protocols; they may support other protocols. Wallets must
 include an "Accept" HTTP header in HTTP(s) requests (as defined
 in RFC 2616):
 
-<pre>Accept: application/bitcoin-paymentrequest</pre>
+<pre>Accept: application/machinecoin-paymentrequest</pre>
 
 If a PaymentRequest cannot be obtained (perhaps the server is
 unavailable), then the customer should be informed that the merchant's
@@ -52,16 +52,16 @@ redirect) should be handled as outlined in RFC 2616.
 ==Compatibility==
 
 Wallet software that does not support this MIP will simply ignore the
-r parameter and will initiate a payment to bitcoin address.
+r parameter and will initiate a payment to machinecoin address.
 
 ==Examples==
 A backwards-compatible request:
 <pre>
-bitcoin:mq7se9wy2egettFxPbmn99cK8v5AFq55Lx?amount=0.11&r=https://merchant.com/pay.php?h%3D2a8628fc2fbe
+machinecoin:mq7se9wy2egettFxPbmn99cK8v5AFq55Lx?amount=0.11&r=https://merchant.com/pay.php?h%3D2a8628fc2fbe
 </pre>
 Non-backwards-compatible equivalent:
 <pre>
-bitcoin:?r=https://merchant.com/pay.php?h%3D2a8628fc2fbe
+machinecoin:?r=https://merchant.com/pay.php?h%3D2a8628fc2fbe
 </pre>
 
 ==References==

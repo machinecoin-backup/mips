@@ -37,13 +37,13 @@ See [[mip-0123.mediawiki|MIP 123]] for definitions of the various MIP layers. Ac
 
 A soft-fork MIP strictly requires a clear miner majority expressed by blockchain voting (eg, using MIP 9). In addition, if the economy seems willing to make a "no confidence" hard-fork (such as a change in proof-of-work algorithm), the soft-fork does not become Final for as long as such a hard-fork might have majority support, or at most three months. Soft-fork MIPs may also set additional requirements for their adoption. Because of the possibility of changes to miner dynamics, especially in light of delegated voting (mining pools), it is highly recommended that a supermajority vote around 95% be required by the MIP itself, unless rationale is given for a lower threshold.
 
-A hard-fork MIP requires adoption from the entire Bitcoin economy, particularly including those selling desirable goods and services in exchange for bitcoin payments, as well as Bitcoin holders who wish to spend or would spend their bitcoins (including selling for other currencies) differently in the event of such a hard-fork. Adoption must be expressed by de facto usage of the hard-fork in practice (ie, not merely expressing public support, although that is a good step to establish agreement before adoption of the MIP). This economic adoption cannot be established merely by a super-majority, except by literally forcing the minority to accept the hard-fork (whether this is viable or not is outside the scope of this document).
+A hard-fork MIP requires adoption from the entire Machinecoin economy, particularly including those selling desirable goods and services in exchange for machinecoin payments, as well as Machinecoin holders who wish to spend or would spend their machinecoins (including selling for other currencies) differently in the event of such a hard-fork. Adoption must be expressed by de facto usage of the hard-fork in practice (ie, not merely expressing public support, although that is a good step to establish agreement before adoption of the MIP). This economic adoption cannot be established merely by a super-majority, except by literally forcing the minority to accept the hard-fork (whether this is viable or not is outside the scope of this document).
 
 Peer services MIPs should be observed to be adopted by at least 1% of public listening nodes for one month.
 
 API/RPC and application layer MIPs must be implemented by at least two independent and compatible software applications.
 
-Software authors are encouraged to publish summaries of what MIPs their software supports to aid in verification of status changes. Good examples of this at the time of writing this MIP, can be observed in [https://github.com/bitcoin/bitcoin/blob/master/doc/mips.md Bitcoin Core's doc/mips.md file] as well as [https://github.com/schildbach/bitcoin-wallet/blob/master/wallet/README.specs Bitcoin Wallet for Android's wallet/README.specs file].
+Software authors are encouraged to publish summaries of what MIPs their software supports to aid in verification of status changes. Good examples of this at the time of writing this MIP, can be observed in [https://github.com/machinecoin/machinecoin/blob/master/doc/mips.md Machinecoin Core's doc/mips.md file] as well as [https://github.com/schildbach/machinecoin-wallet/blob/master/wallet/README.specs Machinecoin Wallet for Android's wallet/README.specs file].
 
 These criteria are considered objective ways to observe the de facto adoption of the MIP, and are not to be used as reasons to oppose or reject a MIP. Should a MIP become actually and unambiguously adopted despite not meeting the criteria outlined here, it should still be updated to Final status.
 
@@ -53,33 +53,33 @@ Why is this necessary at all?
 
 * MIP 1 defines an ambiguous criteria for the Status field of MIPs, which is often a source of confusion. As a result, many MIPs with significant real-world use have been left as Draft or Accepted status longer than appropriate. By giving objective criteria to judge the progression of MIPs, this proposal aims to help keep the Status accurate and up-to-date.
 
-How is the entire Bitcoin economy defined by people selling goods/services and holders?
+How is the entire Machinecoin economy defined by people selling goods/services and holders?
 
-* For Bitcoin to function as a currency, it must be accepted as payment. Bitcoins have no value if you cannot acquire anything in exchange for them. If everyone accepting such payments requires a particular set of consensus rules, "bitcoins" are de facto defined by that set of rules - this is already the case today. If those consensus rules are expected to broaden (as with a hard-fork), those merchants need to accept payments made under the new set of rules, or they will reject "bitcoins" as invalid. Holders are relevant to the degree in that they choose the merchants they wish to spend their bitcoins with, and could also as a whole decide to sell under one set of consensus rules or the other, thus flooding the market with bitcoins and crashing the price.
+* For Machinecoin to function as a currency, it must be accepted as payment. Machinecoins have no value if you cannot acquire anything in exchange for them. If everyone accepting such payments requires a particular set of consensus rules, "machinecoins" are de facto defined by that set of rules - this is already the case today. If those consensus rules are expected to broaden (as with a hard-fork), those merchants need to accept payments made under the new set of rules, or they will reject "machinecoins" as invalid. Holders are relevant to the degree in that they choose the merchants they wish to spend their machinecoins with, and could also as a whole decide to sell under one set of consensus rules or the other, thus flooding the market with machinecoins and crashing the price.
 
 Why aren't <x> included in the economy?
 
-* Some entities may, to some degree, also be involved in offering goods and/or services in exchange for bitcoins, thus in that capacity (but not their capacity as <x>) be involved in the economy.
+* Some entities may, to some degree, also be involved in offering goods and/or services in exchange for machinecoins, thus in that capacity (but not their capacity as <x>) be involved in the economy.
 * Miners are not included in the economy, because they merely *rely on* others to sell/spend their otherwise-worthless mined produce. Therefore, they must accept everyone else's direction in deciding the consensus rules.
-* Exchanges are not included in the economy, because they merely provide services of connecting the merchants and users who wish to trade. Even if all exchanges were to defect from Bitcoin, those merchants and users can always trade directly and/or establish their own exchanges.
+* Exchanges are not included in the economy, because they merely provide services of connecting the merchants and users who wish to trade. Even if all exchanges were to defect from Machinecoin, those merchants and users can always trade directly and/or establish their own exchanges.
 * Developers are not included in the economy, since they merely write code, and it is up to others to decide to use that code or not.
 
-But they're doing something important and have invested a lot in Bitcoin! Shouldn't they be included in such an important decision?
+But they're doing something important and have invested a lot in Machinecoin! Shouldn't they be included in such an important decision?
 
-* This MIP does not aim to address what "should" be the basis of decisions. Such a statement, no matter how perfect in its justification, would be futile without some way to force others to use it. The MIP process does not aim to be a kind of forceful "governance" of Bitcoin, merely to provide a collaborative repository for proposing and providing information on standards, which people may voluntarily adopt or not. It can only hope to achieve accuracy in regard to the "Status" field by striving to reflect the reality of *how things actually are*, rather than *how they should be*.
+* This MIP does not aim to address what "should" be the basis of decisions. Such a statement, no matter how perfect in its justification, would be futile without some way to force others to use it. The MIP process does not aim to be a kind of forceful "governance" of Machinecoin, merely to provide a collaborative repository for proposing and providing information on standards, which people may voluntarily adopt or not. It can only hope to achieve accuracy in regard to the "Status" field by striving to reflect the reality of *how things actually are*, rather than *how they should be*.
 
 What if a single merchant wishes to block a hard-fork?
 
 * This MIP addresses only the progression of the MIP Status field, not the deployment of the hard-fork (or any other change) itself.
-* Regardless, one shop cannot operate in a vacuum: if they are indeed alone, they will soon find themselves no longer selling in exchange for bitcoin payments, as nobody else would exist willing to use the previous blockchain to pay them. If they are no longer selling, they cease to meet the criteria herein which enables their veto.
+* Regardless, one shop cannot operate in a vacuum: if they are indeed alone, they will soon find themselves no longer selling in exchange for machinecoin payments, as nobody else would exist willing to use the previous blockchain to pay them. If they are no longer selling, they cease to meet the criteria herein which enables their veto.
 
 How about a small number of merchants (maybe only two) who sell products to each other?
 
-* In this scenario, it would seem the previous Bitcoin is alive any working, and that the hard-fork has failed. How to resolve such a split is outside the scope of this MIP.
+* In this scenario, it would seem the previous Machinecoin is alive any working, and that the hard-fork has failed. How to resolve such a split is outside the scope of this MIP.
 
 How can economic agreement veto a soft-fork?
 
-* The group of miners is determined by the consensus rules for the dynamic-membership multi-party signature (for Bitcoin, the proof-of-work algorithm), which can be modified with a hard-fork. Thus, if the same conditions required to modify this group are met in opposition to a soft-fork, the miner majority supporting the soft-fork is effectively void because the economy can decide to replace them with another group of would-be miners who do not support the soft-fork.
+* The group of miners is determined by the consensus rules for the dynamic-membership multi-party signature (for Machinecoin, the proof-of-work algorithm), which can be modified with a hard-fork. Thus, if the same conditions required to modify this group are met in opposition to a soft-fork, the miner majority supporting the soft-fork is effectively void because the economy can decide to replace them with another group of would-be miners who do not support the soft-fork.
 
 What happens if the economy decides to hard-fork away from a controversial soft-fork, more than three months later?
 
@@ -102,16 +102,16 @@ What if a MIP is proposed that only makes sense for a single specific project?
 
 ===Specification===
 
-Each MIP should, in its preamble, link to a Bitcoin Wiki page with a summary tone of the comments on that page.
+Each MIP should, in its preamble, link to a Machinecoin Wiki page with a summary tone of the comments on that page.
 Reviewers of the MIP who consider themselves qualified, should post their own comments on this wiki page in [https://www.mediawiki.org/wiki/Help:Talk_pages#Editing_conventions_on_talk_pages standard "Talk page" format].
 The comments page should generally only be used to post final comments for a completed MIP.
 If a MIP is not yet completed, reviewers should instead post on the applicable development mailing list thread to allow the MIP author(s) to address any concerns or problems pointed out by the review.
 
 Some MIPs receive exposure outside the development community prior to completion, and other MIPs might not be completed at all. To avoid a situation where critical MIP reviews may go unnoticed during this period, reviewers may, at their option, still post their review on the comments page, provided they first post it to the mailing list and plan to later remove or revise it as applicable based on the completed version. Such revisions should be made by editing the previous review and updating the timestamp. Reviews made prior to the complete version may be removed if they are no longer applicable and have not been updated in a timely manner (eg, within one month).
 
-Pages must be named after the full MIP number (eg, "MIP 0001") and placed in the "MIP Comments" namespace. For example, the link for MIP 1 will be https://en.bitcoin.it/wiki/MIP_Comments:MIP_0001 .
+Pages must be named after the full MIP number (eg, "MIP 0001") and placed in the "MIP Comments" namespace. For example, the link for MIP 1 will be https://en.machinecoin.it/wiki/MIP_Comments:MIP_0001 .
 
-In order to avoid possible abuse of Bitcoin Wiki moderation, MIPs may choose to list a second forum for MIP comments, in addition to the Bitcoin Wiki. In this case, the second forum's URI should be listed below the Bitcoin Wiki's URI.
+In order to avoid possible abuse of Machinecoin Wiki moderation, MIPs may choose to list a second forum for MIP comments, in addition to the Machinecoin Wiki. In this case, the second forum's URI should be listed below the Machinecoin Wiki's URI.
 
 Summary tones may be chosen from the following, but this MIP does not intend to cover all possible nuances:
 
@@ -124,7 +124,7 @@ Summary tones may be chosen from the following, but this MIP does not intend to 
 For example, the preamble to MIP 1 might be updated to include the line:
 
     Comments-Summary: No comments yet.
-    Comments-URI: https://en.bitcoin.it/wiki/MIP_Comments:MIP_0001
+    Comments-URI: https://en.machinecoin.it/wiki/MIP_Comments:MIP_0001
                   https://some-other-wiki.org/MIP_1_Comments
 
 These fields must follow the "Discussions-To" header defined in MIP 1 (if that header is not present, it should follow the position where it would be present; generally this is immediately above the Status header).
@@ -139,8 +139,8 @@ What is the purpose of MIP comments?
 
 Will MIP comments be censored or limited to particular participants/"experts"?
 
-* The Bitcoin Wiki moderators have control over that venue and may make reasonable moderation attempts. Admitted non-experts should refrain from commenting outside of their area of knowledge. However, comments should not be censored, and participation should be open to the public.
-* If the Bitcoin Wiki were to abuse its position, the venue for comments can always be changed.
+* The Machinecoin Wiki moderators have control over that venue and may make reasonable moderation attempts. Admitted non-experts should refrain from commenting outside of their area of knowledge. However, comments should not be censored, and participation should be open to the public.
+* If the Machinecoin Wiki were to abuse its position, the venue for comments can always be changed.
 
 ==MIP licensing==
 
@@ -181,7 +181,7 @@ In the event that the text or code is not available under common license terms, 
 * CC0-1.0: [https://creativecommons.org/publicdomain/zero/1.0/ Creative Commons CC0 1.0 Universal]
 * GNU-All-Permissive: [http://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html GNU All-Permissive License]
 
-In addition, it is recommended that literal code included in the MIP be dual-licensed under the same license terms as the project it modifies. For example, literal code intended for Bitcoin Core would ideally be dual-licensed under the MIT license terms as well as one of the above with the rest of the MIP text.
+In addition, it is recommended that literal code included in the MIP be dual-licensed under the same license terms as the project it modifies. For example, literal code intended for Machinecoin Core would ideally be dual-licensed under the MIT license terms as well as one of the above with the rest of the MIP text.
 
 ====Not recommended, but acceptable licenses====
 

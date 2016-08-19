@@ -8,11 +8,11 @@
 </pre>
 
 ==What went wrong==
-A block that had a larger number of total transaction inputs than previously seen was mined and broadcasted. Bitcoin 0.8 nodes were able to handle this, but some pre-0.8 Bitcoin nodes rejected it, causing an unexpected fork of the blockchain. The pre-0.8-incompatible chain (from here on, the 0.8 chain) at that point had around 60% of the mining hash power ensuring the split did not automatically resolve (as would have occurred if the pre-0.8 chain outpaced the 0.8 chain in total work, forcing 0.8 nodes to reorganise to the pre-0.8 chain).
+A block that had a larger number of total transaction inputs than previously seen was mined and broadcasted. Machinecoin 0.8 nodes were able to handle this, but some pre-0.8 Machinecoin nodes rejected it, causing an unexpected fork of the blockchain. The pre-0.8-incompatible chain (from here on, the 0.8 chain) at that point had around 60% of the mining hash power ensuring the split did not automatically resolve (as would have occurred if the pre-0.8 chain outpaced the 0.8 chain in total work, forcing 0.8 nodes to reorganise to the pre-0.8 chain).
 
-In order to restore a canonical chain as soon as possible, BTCGuild and Slush downgraded their Bitcoin 0.8 nodes to 0.7 so their pools would also reject the larger block. This placed majority hashpower on the chain without the larger block, thus eventually causing the 0.8 nodes to reorganise to the pre-0.8 chain.
+In order to restore a canonical chain as soon as possible, BTCGuild and Slush downgraded their Machinecoin 0.8 nodes to 0.7 so their pools would also reject the larger block. This placed majority hashpower on the chain without the larger block, thus eventually causing the 0.8 nodes to reorganise to the pre-0.8 chain.
 
-During this time there was at least [https://bitcointalk.org/index.php?topic=152348.0 one large double spend].  However, it was done by someone experimenting to see if it was possible and was not intended to be malicious.
+During this time there was at least [https://machinecointalk.org/index.php?topic=152348.0 one large double spend].  However, it was done by someone experimenting to see if it was possible and was not intended to be malicious.
 
 ==What went right==
 * The split was detected very quickly.
@@ -22,7 +22,7 @@ During this time there was at least [https://bitcointalk.org/index.php?topic=152
 * Fortunately, the only attack on a merchant was done by someone who was not intending to actually steal money.
 
 ==Root cause==
-Bitcoin versions prior to 0.8 configure an insufficient number of Berkeley DB locks to process large but otherwise valid blocks. Berkeley DB locks have to be manually configured by API users depending on anticipated load. The manual says this:
+Machinecoin versions prior to 0.8 configure an insufficient number of Berkeley DB locks to process large but otherwise valid blocks. Berkeley DB locks have to be manually configured by API users depending on anticipated load. The manual says this:
 
 :The recommended algorithm for selecting the maximum number of locks, lockers, and lock objects is to run the application under stressful conditions and then review the lock system's statistics to determine the maximum number of locks, lockers, and lock objects that were used. Then, double these values for safety.
 
@@ -30,7 +30,7 @@ With the insufficiently high BDB lock configuration, it implicitly had become a 
 
 Because max-sized blocks had been successfully processed on the testnet, it did not occur to anyone that there could be blocks that were smaller but require more locks than were available. Prior to 0.7 unmodified mining nodes self-imposed a maximum block size of 500,000 bytes, which further prevented this case from being triggered. 0.7 made the target size configurable and miners had been encouraged to increase this target in the week prior to the incident.
 
-Bitcoin 0.8 did not use Berkeley DB. It switched to LevelDB instead, which did not implement the same locking limits as BDB. Therefore it was able to process the forking block successfully.
+Machinecoin 0.8 did not use Berkeley DB. It switched to LevelDB instead, which did not implement the same locking limits as BDB. Therefore it was able to process the forking block successfully.
 
 Note that BDB locks are also required during processing of re-organizations. Versions prior to 0.8 may be unable to process some valid re-orgs.
 
@@ -44,18 +44,18 @@ This would be an issue even if the entire network was running version 0.7.2. It 
 # Reject blocks that would probably cause more than 10,000 locks to be taken.
 # Limit the maximum block-size created to 500,000 bytes
 # Release a patch for older versions that implements the same rules, but also increases the maximum number of locks to 537,000
-# Create a web page on bitcoin.org that will urge users to upgrade to 0.8.1, but will tell them how to set DB_CONFIG to 537,000 locks if they absolutely cannot.
+# Create a web page on machinecoin.org that will urge users to upgrade to 0.8.1, but will tell them how to set DB_CONFIG to 537,000 locks if they absolutely cannot.
 # Over the next 2 months, send a series of alerts to users of older versions, pointing to the web page.
 
 ===Alert system===
 
 '''Done''': Review who has access to the alert system keys, make sure they all have contact information for each other, and get good timezone overlap by people with access to the keys.
 
-'''Done''': Implement a new bitcoind feature so services can get timely notification of alerts:  -alertnotify=<command>   Run command when an AppliesToMe() alert is received.
+'''Done''': Implement a new machinecoind feature so services can get timely notification of alerts:  -alertnotify=<command>   Run command when an AppliesToMe() alert is received.
 
 '''Done''': Pre-generate 52 test alerts, and set a time every week when they are broadcast on -testnet (so -alertnotify scripts can be tested in as-close-to-real-world conditions as possible).
 
-Idea from Michael Gronager: encourage merchants/exchanges (and maybe pools) to run new code behind a bitcoind running the network-majority version.
+Idea from Michael Gronager: encourage merchants/exchanges (and maybe pools) to run new code behind a machinecoind running the network-majority version.
 
 ===Safe mode===
 

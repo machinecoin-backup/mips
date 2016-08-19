@@ -86,9 +86,9 @@ Why shouldn't the server simply add the commitment upfront in the "coinbasetxn",
 
 ==Reference Implementation==
 
-* [https://github.com/bitcoin/libblkmaker/tree/segwit libblkmaker]
+* [https://github.com/machinecoin/libblkmaker/tree/segwit libblkmaker]
 * [https://github.com/luke-jr/eloipool/tree/segwit Eloipool]
-* [https://github.com/bitcoin/bitcoin/pull/7404/files Bitcoin Core]
+* [https://github.com/machinecoin/machinecoin/pull/7404/files Machinecoin Core]
 
 ==See Also==
 * [[mip-0009.mediawiki|MIP 9: Version bits with timeout and delay]]

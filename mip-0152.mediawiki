@@ -15,7 +15,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ==Motivation==
 
-Historically, the Bitcoin P2P protocol has not been very bandwidth efficient for block relay. Every transaction in a block is included when relayed, even though a large number of the transactions in a given block are already available to nodes before the block is relayed. This causes moderate inbound bandwidth spikes for nodes when receiving blocks, but can cause very significant outbound bandwidth spikes for some nodes which receive a block before their peers. When such spikes occur, buffer bloat can make consumer-grade internet connections temporarily unusable, and can delay the relay of blocks to remote peers who may choose to wait instead of redundantly requesting the same block from other, less congested, peers.
+Historically, the Machinecoin P2P protocol has not been very bandwidth efficient for block relay. Every transaction in a block is included when relayed, even though a large number of the transactions in a given block are already available to nodes before the block is relayed. This causes moderate inbound bandwidth spikes for nodes when receiving blocks, but can cause very significant outbound bandwidth spikes for some nodes which receive a block before their peers. When such spikes occur, buffer bloat can make consumer-grade internet connections temporarily unusable, and can delay the relay of blocks to remote peers who may choose to wait instead of redundantly requesting the same block from other, less congested, peers.
 
 Thus, decreasing the bandwidth used during block relay is very useful for many individuals running nodes.
 
@@ -196,7 +196,7 @@ Older clients remain fully compatible and interoperable after this change.
 
 ==Implementation==
 
-https://github.com/bitcoin/bitcoin/pull/8068
+https://github.com/machinecoin/machinecoin/pull/8068
 
 ==Acknowledgements==
 

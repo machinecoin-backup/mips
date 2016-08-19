@@ -9,7 +9,7 @@
 
 ==Abstract==
 
-This MIP defines a MIME (RFC 2046) Media Type for Bitcoin payment
+This MIP defines a MIME (RFC 2046) Media Type for Machinecoin payment
 request messages.
 
 ==Motivation==
@@ -20,17 +20,17 @@ encapsulating the messages.
 
 ==Specification==
 
-The Media Type (Content-Type in HTML/email headers) for bitcoin
+The Media Type (Content-Type in HTML/email headers) for machinecoin
 protocol messages shall be:
 
 {|
 | Message || Type/Subtype
 |-
-| PaymentRequest || application/bitcoin-paymentrequest
+| PaymentRequest || application/machinecoin-paymentrequest
 |-
-| Payment || application/bitcoin-payment
+| Payment || application/machinecoin-payment
 |-
-| PaymentACK || application/bitcoin-paymentack
+| PaymentACK || application/machinecoin-paymentack
 |}
 
 Payment protocol messages are encoded in binary.
@@ -41,6 +41,6 @@ A web server generating a PaymentRequest message to initiate the
 payment protocol would precede the binary message data with the
 following headers:
 <pre>
-Content-Type: application/bitcoin-paymentrequest
+Content-Type: application/machinecoin-paymentrequest
 Content-Transfer-Encoding: binary
 </pre>

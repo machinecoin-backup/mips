@@ -6,7 +6,7 @@
   Status: Draft
   Type: Informational
   Created: 2015-11-20
-  Post-History: http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-November/011795.html
+  Post-History: http://lists.linuxfoundation.org/pipermail/machinecoin-dev/2015-November/011795.html
 </pre>
 
 ==Abstract==

@@ -21,7 +21,7 @@ The entirety of the transaction's effects are determined by output consumption (
 
 By removing this data from the transaction structure committed to the transaction merkle tree, several problems are fixed:
 
-# '''Nonintentional malleability becomes impossible'''. Since signature data is no longer part of the transaction hash, changes to how the transaction was signed are no longer relevant to transaction identification. As a solution of transaction malleability, this is superior to the canonical signature approach ([https://github.com/bitcoin/mips/blob/master/mip-0062.mediawiki MIP62]):
+# '''Nonintentional malleability becomes impossible'''. Since signature data is no longer part of the transaction hash, changes to how the transaction was signed are no longer relevant to transaction identification. As a solution of transaction malleability, this is superior to the canonical signature approach ([https://github.com/machinecoin/mips/blob/master/mip-0062.mediawiki MIP62]):
 #* It prevents involuntary transaction malleability for any type of scripts, as long as all inputs are signed (with at least one CHECKSIG or CHECKMULTISIG operation)
 #* In the case of an m-of-n CHECKMULTISIG script, a transaction is malleable only with agreement of m private key holders (as opposed to only 1 private key holder with MIP62)
 #* It prevents involuntary transaction malleability due to unknown ECDSA signature malleability
@@ -30,7 +30,7 @@ By removing this data from the transaction structure committed to the transactio
 # '''Some constraints could be bypassed with a soft fork''' by moving part of the transaction data to a structure unknown to current protocol, for example:
 #* Size of witness could be ignored / discounted when calculating the block size, effectively increasing the block size to some extent
 #* Hard coded constants, such as maximum data push size (520 bytes) or sigops limit could be reevaluated or removed
-#* New script system could be introduced without any limitation from the existing script semantic. For example, a new transaction digest algorithm for transaction signature verification is described in [https://github.com/bitcoin/mips/blob/master/mip-0143.mediawiki MIP143]
+#* New script system could be introduced without any limitation from the existing script semantic. For example, a new transaction digest algorithm for transaction signature verification is described in [https://github.com/machinecoin/mips/blob/master/mip-0143.mediawiki MIP143]
 
 ==Specification==
 
@@ -160,7 +160,7 @@ The only item in scriptSig is hashed with HASH160, compared against the 20-byte-
 
 The public key and signature are then verified as described in the previous example.
 
-Comparing with the previous example, the scriptPubKey is 1 byte bigger and the scriptSig is 23 bytes bigger. Although a nested witness program is less efficient, its payment address is fully transparent and backward compatible for all Bitcoin reference client since version 0.6.0.
+Comparing with the previous example, the scriptPubKey is 1 byte bigger and the scriptSig is 23 bytes bigger. Although a nested witness program is less efficient, its payment address is fully transparent and backward compatible for all Machinecoin reference client since version 0.6.0.
 
 === P2WSH ===
 
@@ -181,7 +181,7 @@ The script is executed with the remaining data from witness:
 
 P2WSH allows maximum script size of 10,000 bytes, as the 520-byte push limit is bypassed.
 
-The scriptPubKey occupies 34 bytes, as opposed to 23 bytes of MIP16 P2SH. The increased size improves security against possible collision attacks, as 2<sup>80</sup> work is not infeasible anymore (By the end of 2015, 2<sup>84</sup> hashes have been calculated in Bitcoin mining since the creation of Bitcoin). The spending script is same as the one for an equivalent MIP16 P2SH output but is moved to witness.
+The scriptPubKey occupies 34 bytes, as opposed to 23 bytes of MIP16 P2SH. The increased size improves security against possible collision attacks, as 2<sup>80</sup> work is not infeasible anymore (By the end of 2015, 2<sup>84</sup> hashes have been calculated in Machinecoin mining since the creation of Machinecoin). The spending script is same as the one for an equivalent MIP16 P2SH output but is moved to witness.
 
 === P2WSH nested in MIP16 P2SH ===
 
@@ -209,7 +209,7 @@ The new commitment in coinbase transaction is a hash of the <code>witness root h
 
 For backward compatibility, the <code>Hash(new commitment|witness reserved value)</code> will go to the coinbase witness, and the <code>witness reserved value</code> will be recorded in another location specified by the future softfork. Any number of new commitment could be added in this way.
 
-Any commitments that are not consensus-critical to Bitcoin, such as merge-mining, MUST NOT use the <code>witness reserved value</code> to preserve the ability to do upgrades of the Bitcoin consensus protocol.
+Any commitments that are not consensus-critical to Machinecoin, such as merge-mining, MUST NOT use the <code>witness reserved value</code> to preserve the ability to do upgrades of the Machinecoin consensus protocol.
 
 The optional data space following the commitment also leaves room for metadata of future softforks, and MUST NOT be used for other purpose.
 
@@ -217,21 +217,21 @@ The optional data space following the commitment also leaves room for metadata o
 
 Segregated witness fixes the problem of transaction malleability fundamentally, which enables the building of unconfirmed transaction dependency chains in a trust-free manner.
 
-Two parties, Alice and Bob, may agree to send certain amount of Bitcoin to a 2-of-2 multisig output (the "funding transaction"). Without signing the funding transaction, they may create another transaction, time-locked in the future, spending the 2-of-2 multisig output to third account(s) (the "spending transaction"). Alice and Bob will sign the spending transaction and exchange the signatures. After examining the signatures, they will sign and commit the funding transaction to the blockchain. Without further action, the spending transaction will be confirmed after the lock-time and release the funding according to the original contract. It also retains the flexibility of revoking the original contract before the lock-time, by another spending transaction with shorter lock-time, but only with mutual-agreement of both parties.
+Two parties, Alice and Bob, may agree to send certain amount of Machinecoin to a 2-of-2 multisig output (the "funding transaction"). Without signing the funding transaction, they may create another transaction, time-locked in the future, spending the 2-of-2 multisig output to third account(s) (the "spending transaction"). Alice and Bob will sign the spending transaction and exchange the signatures. After examining the signatures, they will sign and commit the funding transaction to the blockchain. Without further action, the spending transaction will be confirmed after the lock-time and release the funding according to the original contract. It also retains the flexibility of revoking the original contract before the lock-time, by another spending transaction with shorter lock-time, but only with mutual-agreement of both parties.
 
 Such setups is not possible with MIP62 as the malleability fix, since the spending transaction could not be created without both parties first signing the funding transaction. If Alice reveals the funding transaction signature before Bob does, Bob is able to lock up the funding indefinitely without ever signing the spending transaction.
 
-Unconfirmed transaction dependency chain is a fundamental building block of more sophisticated payment networks, such as duplex micropayment channel and the Lightning Network, which have the potential to greatly improve the scalability and efficiency of the Bitcoin system.
+Unconfirmed transaction dependency chain is a fundamental building block of more sophisticated payment networks, such as duplex micropayment channel and the Lightning Network, which have the potential to greatly improve the scalability and efficiency of the Machinecoin system.
 
 == Future extensions ==
 
 === Compact fraud proof for SPV nodes ===
 
-Bitcoin right now only has two real security models. A user either runs a full-node which validates every block with all rules in the system, or a SPV (Simple Payment Verification) client which only validates the headers as a proof of publication of some transactions. The Bitcoin whitepaper suggested that SPV nodes may accept alerts from full nodes when they detect an invalid block, prompting the SPV node to download the questioned blocks and transactions for validation. This approach, however, could become a DoS attack vector as there is virtually no cost to generate a false alarm. An alarm must come with a compact, yet deterministic fraud proof.
+Machinecoin right now only has two real security models. A user either runs a full-node which validates every block with all rules in the system, or a SPV (Simple Payment Verification) client which only validates the headers as a proof of publication of some transactions. The Machinecoin whitepaper suggested that SPV nodes may accept alerts from full nodes when they detect an invalid block, prompting the SPV node to download the questioned blocks and transactions for validation. This approach, however, could become a DoS attack vector as there is virtually no cost to generate a false alarm. An alarm must come with a compact, yet deterministic fraud proof.
 
-In the current Bitcoin protocol, it is possible to generate compact fraud proof for almost all rules except a few:
+In the current Machinecoin protocol, it is possible to generate compact fraud proof for almost all rules except a few:
 
-# It is not possible to prove a miner has introduced too many Bitcoins in the coinbase transaction outputs without showing the whole block itself and all input transactions.
+# It is not possible to prove a miner has introduced too many Machinecoins in the coinbase transaction outputs without showing the whole block itself and all input transactions.
 # It is not possible to prove the violation of any block specific constraints, such as size and sigop limits, without showing the whole block (and all input transactions in the case of sigop limit)
 # It is not possible to prove the spending of a non-existing input without showing all transaction IDs in the blockchain way back to the genesis block.
 
@@ -250,9 +250,9 @@ Examples of new script system include Schnorr signatures which reduce the size o
 
 === Per-input lock-time and relative-lock-time ===
 
-Currently there is only one nLockTime field in a transaction and all inputs must share the same value. [https://github.com/bitcoin/mips/blob/master/mip-0068.mediawiki MIP68] enables per-input relative-lock-time using the nSequence field, however, with a limited lock-time period and resolution.
+Currently there is only one nLockTime field in a transaction and all inputs must share the same value. [https://github.com/machinecoin/mips/blob/master/mip-0068.mediawiki MIP68] enables per-input relative-lock-time using the nSequence field, however, with a limited lock-time period and resolution.
 
-With a soft fork, it is possible to introduce a separate witness structure to allow per-input lock-time and relative-lock-time, and a new script system that could sign and manipulate the new data (like [https://github.com/bitcoin/mips/blob/master/mip-0065.mediawiki MIP65] and [https://github.com/bitcoin/mips/blob/master/mip-0112.mediawiki MIP112]).
+With a soft fork, it is possible to introduce a separate witness structure to allow per-input lock-time and relative-lock-time, and a new script system that could sign and manipulate the new data (like [https://github.com/machinecoin/mips/blob/master/mip-0065.mediawiki MIP65] and [https://github.com/machinecoin/mips/blob/master/mip-0112.mediawiki MIP112]).
 
 == Backward compatibility ==
 
@@ -260,10 +260,10 @@ As a soft fork, older software will continue to operate without modification.  N
 
 '''What a non-upgraded wallet can do'''
 
-* Receiving bitcoin from non-upgraded and upgraded wallets
-* Sending bitcoin to non-upgraded and upgraded wallets with traditional P2PKH address (without any benefit of segregated witness)
-* Sending bitcoin to upgraded wallets using a P2SH address
-* Sending bitcoin to upgraded wallets using a native witness program through [https://github.com/bitcoin/mips/blob/master/mip-0070.mediawiki MIP70] payment protocol
+* Receiving machinecoin from non-upgraded and upgraded wallets
+* Sending machinecoin to non-upgraded and upgraded wallets with traditional P2PKH address (without any benefit of segregated witness)
+* Sending machinecoin to upgraded wallets using a P2SH address
+* Sending machinecoin to upgraded wallets using a native witness program through [https://github.com/machinecoin/mips/blob/master/mip-0070.mediawiki MIP70] payment protocol
 
 '''What a non-upgraded wallet cannot do'''
 
@@ -273,9 +273,9 @@ As a soft fork, older software will continue to operate without modification.  N
 
 This MIP will be deployed by "version bits" MIP9 with the name "segwit" and using bit 1.
 
-For Bitcoin mainnet, the MIP9 starttime will be midnight TBD UTC (Epoch timestamp TBD) and MIP9 timeout will be midnight TBD UTC (Epoch timestamp TBD).
+For Machinecoin mainnet, the MIP9 starttime will be midnight TBD UTC (Epoch timestamp TBD) and MIP9 timeout will be midnight TBD UTC (Epoch timestamp TBD).
 
-For Bitcoin testnet, the MIP9 starttime will be midnight 1 May 2016 UTC (Epoch timestamp 1462060800) and MIP9 timeout will be midnight 1 May 2017 UTC (Epoch timestamp 1493596800).
+For Machinecoin testnet, the MIP9 starttime will be midnight 1 May 2016 UTC (Epoch timestamp 1462060800) and MIP9 timeout will be midnight 1 May 2017 UTC (Epoch timestamp 1493596800).
 
 == Credits ==
 
@@ -287,7 +287,7 @@ Special thanks to Gregory Maxwell for originating many of the ideas in this MIP 
 
 == Reference Implementation ==
 
-https://github.com/bitcoin/bitcoin/pull/8149
+https://github.com/machinecoin/machinecoin/pull/8149
 
 == References ==
 

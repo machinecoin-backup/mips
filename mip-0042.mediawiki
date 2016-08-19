@@ -1,6 +1,6 @@
 <pre>
   MIP: 42
-  Title: A finite monetary supply for Bitcoin
+  Title: A finite monetary supply for Machinecoin
   Author: Pieter Wuille <pieter.wuille@gmail.com>
   Status: Draft
   Type: Standards Track
@@ -9,11 +9,11 @@
 
 ==Abstract==
 
-Although it is widely believed that Satoshi was an inflation-hating goldbug he never said this, and in fact programmed Bitcoin's money supply to grow indefinitely, forever. He modeled the monetary supply as 4 gold mines being discovered per mibillenium (1024 years), with equal intervals between them, each one being depleted over the course of 140 years.
+Although it is widely believed that Satoshi was an inflation-hating goldbug he never said this, and in fact programmed Machinecoin's money supply to grow indefinitely, forever. He modeled the monetary supply as 4 gold mines being discovered per mibillenium (1024 years), with equal intervals between them, each one being depleted over the course of 140 years.
 
-This poses obvious problems, however. Prominent among them is the discussion on what to call 1 billion Bitcoin, which symbol color to use for it, and when wallet clients should switch to it by default.
+This poses obvious problems, however. Prominent among them is the discussion on what to call 1 billion Machinecoin, which symbol color to use for it, and when wallet clients should switch to it by default.
 
-To combat this, this document proposes a controversial change: making Bitcoin's monetary supply finite.
+To combat this, this document proposes a controversial change: making Machinecoin's monetary supply finite.
 
 ==Details==
 
@@ -28,11 +28,11 @@ is carefully written to rely on undefined behaviour in the C++ specification - p
 
 The block number is divided by 210000 (the "apparent" subsidy halving interval in blocks), and the result is used as input for a binary shift, applied to the original payout (50 BTC), expressed in base units. Thanks to the new-goldmine interval being exactly 64 times the halving interval, and 64 being the size in bits of the currency datatype, the cycle repeats itself every 64 halvings on all currently supported platforms.
 
-Despite the nice showoff of underhanded programming skills - we want Bitcoin to be well-specified. Otherwise, we're clearly in for a bumpy ride:
+Despite the nice showoff of underhanded programming skills - we want Machinecoin to be well-specified. Otherwise, we're clearly in for a bumpy ride:
 
 <img src="mip-0042/inflation.png"></img>
 
-Note that several other programming languages do not exhibit this behaviour, making new implementations likely to be slower and generally more bogus than Bitcoin Core. For example, Python unexpectedly returns 0 when shifting an integer beyond its size.
+Note that several other programming languages do not exhibit this behaviour, making new implementations likely to be slower and generally more bogus than Machinecoin Core. For example, Python unexpectedly returns 0 when shifting an integer beyond its size.
 
 ==Other solutions==
 
@@ -42,7 +42,7 @@ An obvious solution would be to reimplement the shape of the subsidy curve using
 
 ===Truncation===
 
-An alternative solution would be to represent the total number of bitcoins as a string:
+An alternative solution would be to represent the total number of machinecoins as a string:
 
     "21000000000000000000000"
 
@@ -60,7 +60,7 @@ A softfork (see MIP16, MIP34, MIP62) will take place on april 1st 2214, permanen
 
 ==Implementation==
 
-An implementation for the reference client can be found on https://github.com/bitcoin/bitcoin/pull/3842 .
+An implementation for the reference client can be found on https://github.com/machinecoin/machinecoin/pull/3842 .
 
 ==Compatibility==
 

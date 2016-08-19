@@ -18,7 +18,7 @@ The specification defines the layers and sets forth specific criteria for decidi
 
 ==Motivation==
 
-Bitcoin is a system involving a number of different standards. Some standards are absolute requirements for interoperability while others can be considered optional, giving implementors a choice of whether to support them.
+Machinecoin is a system involving a number of different standards. Some standards are absolute requirements for interoperability while others can be considered optional, giving implementors a choice of whether to support them.
 
 In order to have a MIP process which more closely reflects the interoperability requirements, it is necessary to categorize MIPs accordingly. Lower layers present considerably greater challenges in getting standards accepted and deployed.
 
@@ -273,7 +273,7 @@ The applications layer specifies high level structures, abstractions, and conven
 |-
 | [[mip-0042.mediawiki|42]]
 | Consensus (soft fork)
-| A finite monetary supply for Bitcoin
+| A finite monetary supply for Machinecoin
 | Pieter Wuille
 | Standard
 | Draft
@@ -449,7 +449,7 @@ The applications layer specifies high level structures, abstractions, and conven
 |-
 | [[mip-0106.mediawiki|106]]
 | Consensus (hard fork)
-| Dynamically Controlled Bitcoin Block Size Max Cap
+| Dynamically Controlled Machinecoin Block Size Max Cap
 | Upal Chakraborty
 | Standard
 | Draft

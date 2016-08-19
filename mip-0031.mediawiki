@@ -13,9 +13,9 @@ This document describes a trivial protocol extension that makes it easier for cl
 
 ==Motivation==
 
-Today there are a few network related problems that can degrade the Bitcoin user experience:
+Today there are a few network related problems that can degrade the Machinecoin user experience:
 
-1) Some Bitcoin clients run on platforms that can go to sleep and essentially stop running at any time without warning. Notably, this is very common on both mobiles and laptops (shut the lid). When the system comes back, TCP connections that existed before the sleep still exist but may no longer function correctly, eg, because the IP address has changed, or because the remote peer went away or the connection was timed out by some other system. Currently it can often take a while to notice this has happened.
+1) Some Machinecoin clients run on platforms that can go to sleep and essentially stop running at any time without warning. Notably, this is very common on both mobiles and laptops (shut the lid). When the system comes back, TCP connections that existed before the sleep still exist but may no longer function correctly, eg, because the IP address has changed, or because the remote peer went away or the connection was timed out by some other system. Currently it can often take a while to notice this has happened.
 
 2) The reference Satoshi client is largely single threaded and when placed under heavy load (e.g., because it is downloading the block chain) becomes very slow to respond to network messages. There's no easy way to detect this has occurred, especially if you are just passively waiting for broadcasts from that peer. A way to detect overloaded remote peers and avoid them would both help balance load and provide a better, more responsive system.
 
@@ -35,4 +35,4 @@ Clients must opt-in to the new feature by advertising a protocol version > 60000
 
 ==Implementation==
 
-https://github.com/bitcoin/bitcoin/pull/932/files
+https://github.com/machinecoin/machinecoin/pull/932/files
