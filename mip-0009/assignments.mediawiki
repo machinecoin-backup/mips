@@ -1,0 +1,37 @@
+==Deployments==
+
+List of proposed deployments.
+
+State can be defined, active, failed. Dates are in UTC.
+
+{| class="wikitable sortable"
+! Name
+! Bit
+! Mainnet Start
+! Mainnet Expire
+! Mainnet State
+! Testnet Start
+! Testnet Expire
+! Testnet State
+! MIPs
+|-
+| csv
+| 0
+| 2016-05-01 00:00:00
+| 2017-05-01 00:00:00
+| active since #419328
+| 2016-03-01 00:00:00
+| 2017-05-01 00:00:00
+| active since #770112
+| [[/mip-0068.mediawiki|68]], [[/mip-0112.mediawiki|112]], [[/mip-0113.mediawiki|113]]
+|-
+| segwit
+| 1
+| TBD
+| TBD
+| -
+| 2016-05-01 00:00:00
+| 2017-05-01 00:00:00
+| active since #834624
+| [[/mip-0141.mediawiki|141]], [[/mip-0143.mediawiki|143]]
+|}
